@@ -1,0 +1,18 @@
+# Data processing parameters  
+data:
+  test_size: 0.49
+  val_split: 0.6939
+  random_state: 42
+
+# TF-IDF model parameters
+tfidf:
+  max_features: 10000
+  ngram_range: [1, 2]
+  min_df: 2
+  max_df: 0.95
+  C: 1.0
+  max_iter: 2000
+
+# Training parameters
+training:
+  cv_folds: 3

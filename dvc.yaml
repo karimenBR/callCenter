@@ -1,0 +1,37 @@
+stages:
+  prepare_data:
+    cmd: conda run -n callcenter-ai python scripts/clean_data.py
+    deps:
+      - data/raw/dataset.csv
+      - scripts/clean_data.py
+    outs:
+      - data/processed/cleaned_dataset.csv
+
+  split_data:
+    cmd: conda run -n callcenter-ai python scripts/split_data.py
+    deps:
+      - data/processed/cleaned_dataset.csv
+      - scripts/split_data.py
+    params:
+      - data.test_size
+      - data.val_split
+      - data.random_state
+    outs:
+      - data/processed/train.csv
+      - data/processed/val.csv  
+      - data/processed/test.csv
+
+  train_tfidf:
+    cmd: conda run -n callcenter-ai python scripts/train_tfidf_simple.py
+    deps:
+      - data/processed/train.csv
+      - data/processed/val.csv
+      - scripts/train_tfidf_simple.py
+    params:
+      - tfidf
+      - training.cv_folds
+    outs:
+      - models/tfidf/model.pkl
+      - models/tfidf/classification_report.json
+    metrics:
+      - models/tfidf/metrics.json

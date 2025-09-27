@@ -1,0 +1,87 @@
+schema: '2.0'
+stages:
+  prepare_data:
+    cmd: conda run -n callcenter-ai python scripts/clean_data.py
+    deps:
+    - path: data/raw/dataset.csv
+      hash: md5
+      md5: a05aa13d753884547cc46e6f525bfb82
+      size: 14568920
+    - path: scripts/clean_data.py
+      hash: md5
+      md5: a033578ddcbd2cb135ad5491f2fdf6eb
+      size: 1183
+    outs:
+    - path: data/processed/cleaned_dataset.csv
+      hash: md5
+      md5: c8359282154cb1351a4e84254833deda
+      size: 14568572
+  split_data:
+    cmd: conda run -n callcenter-ai python scripts/split_data.py
+    deps:
+    - path: data/processed/cleaned_dataset.csv
+      hash: md5
+      md5: c8359282154cb1351a4e84254833deda
+      size: 14568572
+    - path: scripts/split_data.py
+      hash: md5
+      md5: 4a8f24ce0580483b9021309ef68cd508
+      size: 1733
+    params:
+      params.yaml:
+        data.random_state: 42
+        data.test_size: 0.49
+        data.val_split: 0.6939
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 0f85bbd33a888a5bdd0a56b273fe6eb6
+      size: 5018564
+    - path: data/processed/train.csv
+      hash: md5
+      md5: d6f9a8b1fa65e3d7c7d3e0c275a76977
+      size: 7361159
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 7888d062f79181cd421248a952c66c99
+      size: 2188893
+  train_tfidf:
+    cmd: conda run -n callcenter-ai python scripts/train_tfidf_simple.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: d6f9a8b1fa65e3d7c7d3e0c275a76977
+      size: 7361159
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 7888d062f79181cd421248a952c66c99
+      size: 2188893
+    - path: scripts/train_tfidf_simple.py
+      hash: md5
+      md5: 0060ee8ed711df7ec2db541c4e09b448
+      size: 7586
+    params:
+      params.yaml:
+        tfidf:
+          max_features: 10000
+          ngram_range:
+          - 1
+          - 2
+          min_df: 2
+          max_df: 0.95
+          C: 1.0
+          max_iter: 2000
+        training.cv_folds: 3
+    outs:
+    - path: models/tfidf/classification_report.json
+      hash: md5
+      md5: c735902540978cc88f7acc05ee2c829a
+      size: 1612
+    - path: models/tfidf/metrics.json
+      hash: md5
+      md5: 745a33d9af03fba9c5f862d58bbda575
+      size: 141
+    - path: models/tfidf/model.pkl
+      hash: md5
+      md5: bc15325faaef985869c02bd1bbfd774a
+      size: 3039225
