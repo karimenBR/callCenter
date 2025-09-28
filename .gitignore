@@ -43,15 +43,7 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Data (managed by DVC)
-/data/raw/dataset.csv
-/data/processed/
 
-# Models (managed by DVC)
-/models/
-
-# MLflow
-/mlruns/
 
 # Environment variables
 .env

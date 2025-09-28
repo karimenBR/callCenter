@@ -1,0 +1,63 @@
+{
+  "Access": {
+    "precision": 0.904296875,
+    "recall": 0.8662301216089804,
+    "f1-score": 0.884854276158624,
+    "support": 1069.0
+  },
+  "Administrative rights": {
+    "precision": 0.8464912280701754,
+    "recall": 0.7310606060606061,
+    "f1-score": 0.7845528455284553,
+    "support": 264.0
+  },
+  "HR Support": {
+    "precision": 0.8614163614163615,
+    "recall": 0.8619425778863775,
+    "f1-score": 0.861679389312977,
+    "support": 1637.0
+  },
+  "Hardware": {
+    "precision": 0.793600721045516,
+    "recall": 0.8623898139079333,
+    "f1-score": 0.8265665336775405,
+    "support": 2042.0
+  },
+  "Internal Project": {
+    "precision": 0.8673469387755102,
+    "recall": 0.8018867924528302,
+    "f1-score": 0.8333333333333334,
+    "support": 318.0
+  },
+  "Miscellaneous": {
+    "precision": 0.8250478011472275,
+    "recall": 0.8149197355996223,
+    "f1-score": 0.8199524940617577,
+    "support": 1059.0
+  },
+  "Purchase": {
+    "precision": 0.9734513274336283,
+    "recall": 0.8943089430894309,
+    "f1-score": 0.9322033898305084,
+    "support": 369.0
+  },
+  "Storage": {
+    "precision": 0.9224806201550387,
+    "recall": 0.8561151079136691,
+    "f1-score": 0.8880597014925373,
+    "support": 417.0
+  },
+  "accuracy": 0.849616724738676,
+  "macro avg": {
+    "precision": 0.8742664841304322,
+    "recall": 0.8361067123149312,
+    "f1-score": 0.8539002454244666,
+    "support": 7175.0
+  },
+  "weighted avg": {
+    "precision": 0.8521614224351555,
+    "recall": 0.849616724738676,
+    "f1-score": 0.8500463877476251,
+    "support": 7175.0
+  }
+}

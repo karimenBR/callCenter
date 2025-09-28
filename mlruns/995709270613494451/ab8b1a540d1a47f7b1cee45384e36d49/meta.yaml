@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/hamdi/callCenter/mlruns/995709270613494451/ab8b1a540d1a47f7b1cee45384e36d49/artifacts
+end_time: 1758993460814
+entry_point_name: ''
+experiment_id: '995709270613494451'
+lifecycle_stage: active
+run_id: ab8b1a540d1a47f7b1cee45384e36d49
+run_name: tfidf_C_1.0
+run_uuid: ab8b1a540d1a47f7b1cee45384e36d49
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758993431133
+status: 3
+tags: []
+user_id: hamdi
